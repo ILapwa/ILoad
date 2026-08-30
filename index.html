@@ -1063,6 +1063,12 @@ function spinWheel() {
 // ===== МЕМЫ (ОТДЕЛЬНАЯ СТРАНИЦА) =====
 let memesLoaded = false;
 
+// === НАСТРОЙКИ GITHUB ===
+const GITHUB_OWNER = 'ilapwa';
+const GITHUB_REPO = 'SIGARETS';
+const GITHUB_BRANCH = 'main';
+const GITHUB_FILE = 'pending.json';
+
 function getMemes() {
     const saved = localStorage.getItem('userMemes');
     if (saved) {
@@ -1141,46 +1147,103 @@ function hideAddMeme() {
 function addMeme() {
     let input = document.getElementById('memeUrlInput').value.trim();
     const title = document.getElementById('memeTitleInput').value.trim() || 'Мем без названия';
+    const author = prompt('✍️ Введите ваше имя (для указания автора):') || 'Аноним';
     
     if (!input) {
         alert('❌ Вставь iframe с Pinterest!');
         return;
     }
     
-    const isPinterest = input.includes('assets.pinterest.com/ext/embed.html');
-    
-    if (isPinterest) {
-        if (!input.includes('<iframe')) {
-            const idMatch = input.match(/id=([0-9]+)/);
-            const pinId = idMatch ? idMatch[1] : 'unknown';
-            input = `<iframe src="https://assets.pinterest.com/ext/embed.html?id=${pinId}" height="322" width="345" frameborder="0" scrolling="no"></iframe>`;
-        }
-        
-        const block = createPinterestBlock(input);
-        if (block) {
-            const memes = getMemes();
-            memes.unshift({ 
-                title: title, 
-                url: input, 
-                isPinterest: true,
-                html: block.outerHTML 
-            });
-            saveMemes(memes);
-            loadMemes();
-            hideAddMeme();
-            return;
-        } else {
-            alert('❌ Не удалось распознать Pinterest. Проверь ссылку.');
-            return;
-        }
+    if (!input.includes('assets.pinterest.com/ext/embed.html')) {
+        alert('❌ Можно вставлять только Pinterest iframe!\n\nПример:\n<iframe src="https://assets.pinterest.com/ext/embed.html?id=856387685438368023" height="558" width="345" frameborder="0" scrolling="no"></iframe>');
+        return;
     }
     
-    alert('❌ МОЖНО ВСТАВЛЯТЬ ТОЛЬКО PINTEREST IFRAME!\n\n' +
-          '📌 Скопируй код вставки с Pinterest и вставь его сюда.\n' +
-          '📌 Он выглядит примерно так:\n' +
-          '<iframe src="https://assets.pinterest.com/ext/embed.html?id=123456789" height="322" width="345" frameborder="0" scrolling="no"></iframe>\n\n' +
-          '📌 Или просто вставь ссылку на Pinterest (автоматически обернётся).\n' +
-          '📌 Не забудь указать автора в названии мема!');
+    sendPendingMeme(title, input, author);
+}
+
+// ===== ОТПРАВИТЬ ЗАЯВКУ В PENDING.JSON =====
+async function sendPendingMeme(title, iframeCode, author) {
+    try {
+        // Получаем текущие заявки
+        const current = await getPendingFromGitHub();
+        
+        // Добавляем новую
+        current.push({
+            title: title,
+            iframe: iframeCode,
+            author: author || 'Аноним',
+            date: new Date().toISOString()
+        });
+        
+        // Обновляем файл на GitHub (через fetch)
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(current, null, 2))));
+        const sha = await getFileSHA(GITHUB_FILE);
+        
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: `Новая заявка: ${title}`,
+                content: content,
+                sha: sha,
+                branch: GITHUB_BRANCH
+            })
+        });
+        
+        if (response.ok) {
+            alert(`✅ Мем отправлен на проверку!\n\nНазвание: ${title}\nАвтор: ${author || 'Аноним'}\n\nСкоро будет добавлен на сайт.`);
+            document.getElementById('memeUrlInput').value = '';
+            document.getElementById('memeTitleInput').value = '';
+            hideAddMeme();
+        } else {
+            const error = await response.json();
+            alert(`❌ Ошибка: ${error.message || 'Неизвестная ошибка'}`);
+        }
+    } catch(e) {
+        alert(`❌ Ошибка: ${e.message}`);
+    }
+}
+
+// ===== ПОЛУЧИТЬ ЗАЯВКИ ИЗ PENDING.JSON =====
+async function getPendingFromGitHub() {
+    try {
+        const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE}`);
+        if (!response.ok) return [];
+        const data = await response.json();
+        return Array.isArray(data) ? data : [];
+    } catch(e) {
+        return [];
+    }
+}
+
+// ===== ПОЛУЧИТЬ SHA ФАЙЛА =====
+async function getFileSHA(file) {
+    try {
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${file}`);
+        const data = await response.json();
+        return data.sha || null;
+    } catch(e) {
+        return null;
+    }
+}
+
+// ===== ПОКАЗАТЬ ЗАЯВКИ (ТОЛЬКО ДЛЯ ТЕБЯ) =====
+async function showPending() {
+    const pending = await getPendingFromGitHub();
+    if (pending.length === 0) {
+        alert('📭 Нет новых заявок!');
+        return;
+    }
+    let msg = '📩 ЗАЯВКИ НА МЕМЫ:\n\n';
+    pending.forEach((m, i) => {
+        msg += `${i+1}. ${m.title} — ${m.author}\n`;
+        msg += `   iframe: ${m.iframe.substring(0, 80)}...\n\n`;
+    });
+    msg += '\n📌 Зайди в pending.json на GitHub и скопируй iframe!';
+    alert(msg);
 }
 
 function loadMemes() {
@@ -1217,16 +1280,13 @@ function loadMemes() {
         });
         
         if (meme.isPinterest) {
-            // ===== PINTEREST БЛОК (БЕЗ ЗАГОЛОВКА) =====
             const temp = document.createElement('div');
             temp.innerHTML = meme.html || '';
             const content = temp.firstElementChild;
             if (content) {
-                // Удаляем заголовок с автором
                 const header = content.querySelector('.pinterest-header');
                 if (header) header.remove();
                 
-                // Настраиваем iframe на квадрат
                 const iframe = content.querySelector('iframe');
                 if (iframe) {
                     iframe.style.width = '100%';
@@ -1238,7 +1298,6 @@ function loadMemes() {
                     iframe.style.display = 'block';
                 }
                 
-                // Убираем лишние стили у блока
                 content.style.background = 'none';
                 content.style.padding = '0';
                 content.style.margin = '0';
@@ -1250,7 +1309,6 @@ function loadMemes() {
                 card.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#a89b8e;">Ошибка загрузки</div>`;
             }
         } else {
-            // ===== ОБЫЧНАЯ КАРТИНКА =====
             const img = document.createElement('img');
             img.src = meme.url || 'https://via.placeholder.com/300x300/432d1e/df9b56?text=ОШИБКА';
             img.alt = meme.title;
@@ -1263,7 +1321,6 @@ function loadMemes() {
                 this.src = 'https://via.placeholder.com/300x300/432d1e/df9b56?text=ОШИБКА';
             };
             
-            // Название при наведении
             const titleDiv = document.createElement('div');
             titleDiv.className = 'meme-title';
             titleDiv.textContent = meme.title;
@@ -1294,7 +1351,6 @@ function loadMemes() {
             });
         }
         
-        // ===== КНОПКА УДАЛЕНИЯ =====
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-btn';
         deleteBtn.textContent = '✕';
@@ -1410,6 +1466,7 @@ function insertPinterestBlock(iframeCode, container) {
     }
     return false;
 }
+</script>
     </script>
 </body>
 </html>
