@@ -465,7 +465,35 @@
                 padding: 6px 10px !important;
             }
         }
-        
+        /* ===== СТРАНИЦА ИГР ===== */
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(223,155,86,0.6) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 20px rgba(223,155,86,0.15) !important;
+}
+
+@media (max-width: 600px) {
+    #gamesGrid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    .game-card div:first-child {
+        min-height: 100px !important;
+        padding: 20px 10px !important;
+    }
+    .game-card div:first-child div:first-child {
+        font-size: 3rem !important;
+    }
+    .game-card div:first-child div:nth-child(2) {
+        font-size: 1.2rem !important;
+    }
+}
+/* ===== ПРЯЧЕМ ФОТКИ НА ТЕЛЕФОНЕ ===== */
+@media (max-width: 768px) {
+    .pin-side {
+        display: none !important;
+    }
+}
 </style>
 
 </head>
@@ -478,6 +506,7 @@
             <button onclick="openCal()" style="background: rgba(45,38,32,0.7); border: 1px solid rgba(223,155,86,0.25); color: #d1c7bd; padding: 7px 16px; border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; transition: all 0.3s ease; white-space: nowrap;">📅 Календарь</button>
             <button onclick="openWheel()" style="background: rgba(45,38,32,0.7); border: 1px solid rgba(223,155,86,0.25); color: #d1c7bd; padding: 7px 16px; border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; transition: all 0.3s ease; white-space: nowrap;">🎰 Рулетка</button>
             <button onclick="openMemes()" style="background: rgba(45,38,32,0.7); border: 1px solid rgba(223,155,86,0.25); color: #d1c7bd; padding: 7px 16px; border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; transition: all 0.3s ease; white-space: nowrap;">Мемасики</button>
+            <button onclick="openGames()" style="background: rgba(45,38,32,0.7); border: 1px solid rgba(223,155,86,0.25); color: #d1c7bd; padding: 6px 12px; border-radius: 30px; cursor: pointer; font-size: 0.75rem; font-family: Georgia, serif; transition: all 0.3s ease; white-space: nowrap; flex-shrink: 0;">🎮 Игры</button>
         </nav>
         <div style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 1.5rem; font-weight: bold; color: #df9b56; text-shadow: 0 0 20px rgba(223,155,86,0.2); letter-spacing: 2px; order: 1;">
             SIGARETS <span style="color: #f7f5f0;">| Базар</span>
@@ -499,26 +528,58 @@
         <!-- СЕТКА МЕМОВ -->
         <div id="memesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; width: 100%;"></div>
     </div>
-
-    <!-- ВЫЕЗЖАЮЩЕЕ БОКОВОЕ МЕНЮ -->
-    <div class="side" id="sb">
-        <div class="s-ttl">Навигация</div>
-        <a href="#" class="s-item">🏠 Главная</a>
-        <a href="#" class="s-item">⏳ Таймер</a>
-        <div class="s-div"></div>
-        <div class="s-ttl">ОГЭ ВНАТУРЕ</div>
-        <a href="https://fipi.ru/" target="_blank" class="s-item">📃 ФИПИ</a>
-        <a href="https://rus-oge.sdamgia.ru/" target="_blank" class="s-item">📝 Русский</a>
-        <a href="https://math-oge.sdamgia.ru/" target="_blank" class="s-item">📐 Математика</a>
-        <a href="https://inf-oge.sdamgia.ru/" target="_blank" class="s-item">💻 Информатика</a>
-        <a href="https://geo-oge.sdamgia.ru/" target="_blank" class="s-item">🌍 География</a>
-        <a href="https://soc-oge.sdamgia.ru/" class="s-item">⚖️ Обществознание</a>
-        <div class="s-div"></div>
-        <a href="https://t.me/ilapwa27" class="s-item">✈️ Telegram</a>
-        <div class="s-div"></div>
-        <a href="#" onclick="resetCounter(); return false;" class="s-item">🔄 Сбросить кликер</a>
+    <!-- ===== СТРАНИЦА С ИГРАМИ ===== -->
+<div id="gamesPage" style="display: none; width: 100%; max-width: 1200px; min-height: 80vh; padding: 20px 0;">
+    <!-- ШАПКА СТРАНИЦЫ ИГР -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; border-bottom: 2px solid rgba(223,155,86,0.2); padding-bottom: 15px;">
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <button onclick="closeGames()" style="background: rgba(45,38,32,0.7); border: 1px solid rgba(223,155,86,0.25); color: #d1c7bd; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-size: 0.9rem; font-family: Georgia, serif; transition: all 0.3s ease;">🏠 Главная</button>
+            <h2 style="font-family: 'Comic Sans MS', cursive, sans-serif; color: #df9b56; margin: 0; font-size: 1.8rem;">🎮 Игры</h2>
+        </div>
     </div>
-
+    
+    <!-- СЕТКА ИГР -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; width: 100%;">
+        <!-- Flappy Bird -->
+        <div class="game-card" onclick="openFlappy()" style="background: rgba(35,30,25,0.92); border: 2px solid rgba(223,155,86,0.3); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <div style="background: #0a1a0a; padding: 30px 20px; text-align: center; min-height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="font-size: 4rem;">🐦</div>
+                <div style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 1.8rem; color: #f9c74f; text-shadow: 0 0 20px rgba(249,199,79,0.3); margin-top: 10px;">Flappy Bird</div>
+                <div style="font-size: 0.8rem; color: #a89b8e; margin-top: 5px;">Не врезайся в трубы!</div>
+            </div>
+            <div style="padding: 12px 15px; text-align: center; font-family: 'Comic Sans MS', cursive, sans-serif; color: #e3dec3; border-top: 1px solid rgba(223,155,86,0.1);">
+                🎯 Нажми чтобы играть
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ FLAPPY BIRD ===== -->
+<div id="flappyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+    <div style="position: relative; width: 90%; max-width: 380px; height: 500px; background: #000; border-radius: 16px; overflow: hidden; border: 2px solid #f9c74f; box-shadow: 0 0 40px rgba(249,199,79,0.15);">
+        <button onclick="closeFlappy()" style="position: absolute; top: 8px; right: 10px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 1.2rem; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.2s;">✕</button>
+        <iframe src="https://flappybird.io/" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+</div>
+<div class="side" id="sb">
+    <a href="#" onclick="goHome(); return false;" class="s-item"></a>
+    <a href="#" onclick="goHome(); return false;" class="s-item"></a>
+    <a href="#" onclick="goHome(); return false;" class="s-item"></a>
+    <div class="s-ttl">Навигация</div>
+    <a href="#" onclick="goHome(); return false;" class="s-item">🏠 Главная</a>
+    <div class="s-div"></div>
+    <div class="s-ttl">ОГЭ ВНАТУРЕ</div>
+    <a href="https://fipi.ru/" target="_blank" class="s-item">📃 ФИПИ</a>
+    <a href="https://rus-oge.sdamgia.ru/" target="_blank" class="s-item">📝 Русский</a>
+    <a href="https://math-oge.sdamgia.ru/" target="_blank" class="s-item">📐 Математика</a>
+    <a href="https://inf-oge.sdamgia.ru/" target="_blank" class="s-item">💻 Информатика</a>
+    <a href="https://geo-oge.sdamgia.ru/" target="_blank" class="s-item">🌍 География</a>
+    <a href="https://soc-oge.sdamgia.ru/" class="s-item">⚖️ Обществознание</a>
+    <div class="s-div"></div>
+    <a href="https://t.me/ilapwa27" class="s-item">✈️ Telegram</a>
+    <div class="s-div"></div>
+    <a href="#" onclick="resetCounter(); return false;" class="s-item">🔄 Сбросить кликер</a>
+</div>
     <div class="hd">
         <h1 id="hd">Привет!</h1>
         <p>Кто прочитал у того батя красавчик</p>
@@ -596,25 +657,27 @@
         </div>
     </div>
     
-    <!-- ====== МОДАЛЬНОЕ ОКНО РУЛЕТКИ (БОЛЬШОЕ, БЕЗ ПОЛЗУНКА) ====== -->
-    <div id="wheelModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,8,7,0.9); backdrop-filter: blur(6px); z-index: 2000; align-items: center; justify-content: center;">
-        <div class="card" style="max-width: 950px; width: 95%; position: relative; padding: 30px; background: #221f1c; border: 2px solid #df9b56; height: 88vh; box-shadow: 0 0 35px #000; border-radius: 16px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
-            <span onclick="closeWheel()" style="position: absolute; top: 15px; right: 25px; color: #df9b56; font-size: 2.5rem; cursor: pointer; font-weight: bold; z-index: 10; transition: 0.2s;">&times;</span>
-            <div class="title" style="font-family: 'Footlight MT Light', Georgia, serif; font-size: 1.8rem; font-weight: bold; color: #df9b56; text-align: center;">🎰 #КАЗИК #КРУТИТЬ #АПГРЕЙД </div>
-            <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; align-items: stretch; flex: 1; min-height: 0;">
-                <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 12px;">
-                    <div style="font-family: Georgia, serif; color: #df9b56; font-size: 1.1rem; font-weight: bold;">Впиши варианты (каждый с новой строки):</div>
-                    <textarea id="wheel-items" style="width: 100%; flex: 1; min-height: 180px; background: rgba(20,15,10,0.9); border: 1px solid rgba(223,155,86,0.3); border-radius: 10px; color: #ffffff; padding: 12px; font-family: Georgia, serif; font-size: 1.1rem; resize: none; box-sizing: border-box; outline: none;">Егор-Соль&#10;Кирилл-Чекушка&#10;Леня-Жир&#10;Богдан-Опер&#10;Виталя-Мыло&#10;Вова-Метр&#10;Матвей-Бадяг</textarea>
-                    <button onclick="spinWheel()" style="background: linear-gradient(90deg, #b0652f, #df9b56); border: none; color: #231d19; padding: 14px; border-radius: 8px; font-size: 1.3rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.1s; width: 100%;">КРУТИТЬ КОЛЕСО! 🚀</button>
-                </div>
-                <div style="position: relative; width: 360px; height: 360px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                    <div style="position: absolute; top: -5px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 30px solid #df9b56; z-index: 15; filter: drop-shadow(0 2px 5px #000);"></div>
-                    <canvas id="wheelCanvas" width="340" height="340" style="width: 340px; height: 340px; border-radius: 50%; box-shadow: 0 0 30px rgba(0,0,0,0.7); transition: transform 4s cubic-bezier(0.1, 0.8, 0.1, 1); z-index: 5;"></canvas>
-                    <div style="position: absolute; width: 24px; height: 24px; background: #df9b56; border-radius: 50%; z-index: 10; border: 3px solid #221f1c; box-shadow: 0 0 15px #000;"></div>
-                </div>
+    <!-- ====== МОДАЛЬНОЕ ОКНО РУЛЕТКИ (ПОЧИНЕННАЯ ДЛЯ ТЕЛЕФОНА) ====== -->
+<div id="wheelModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,8,7,0.92); backdrop-filter: blur(6px); z-index: 2000; align-items: center; justify-content: center; padding: 10px; box-sizing: border-box;">
+    <div class="card" style="max-width: 950px; width: 100%; max-height: 98vh; height: auto; position: relative; padding: 20px; background: #221f1c; border: 2px solid #df9b56; box-shadow: 0 0 35px #000; border-radius: 16px; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box; overflow-y: auto;">
+        <button onclick="closeWheel()" style="position: sticky; top: 0; float: right; background: rgba(0,0,0,0.4); border: 1px solid rgba(223,155,86,0.3); color: #df9b56; font-size: 1.6rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.2s; margin-left: auto; flex-shrink: 0;">✕</button>
+        <div class="title" style="font-family: 'Footlight MT Light', Georgia, serif; font-size: 1.5rem; font-weight: bold; color: #df9b56; text-align: center; margin-top: -10px;">🎰 #КАЗИК #КРУТИТЬ #АПГРЕЙД</div>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1;">
+            <!-- Левая часть: textarea и кнопка -->
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="font-family: Georgia, serif; color: #df9b56; font-size: 1rem; font-weight: bold;">Впиши варианты (каждый с новой строки):</div>
+                <textarea id="wheel-items" style="width: 100%; min-height: 150px; max-height: 250px; background: rgba(20,15,10,0.9); border: 1px solid rgba(223,155,86,0.3); border-radius: 10px; color: #ffffff; padding: 10px; font-family: Georgia, serif; font-size: 1rem; resize: vertical; box-sizing: border-box; outline: none;">Егор-Соль&#10;Кирилл-Чекушка&#10;Леня-Жир&#10;Богдан-Опер&#10;Виталя-Мыло&#10;Вова-Метр&#10;Матвей-Бадяг</textarea>
+                <button onclick="spinWheel()" style="background: linear-gradient(90deg, #b0652f, #df9b56); border: none; color: #231d19; padding: 12px; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.1s; width: 100%;">КРУТИТЬ КОЛЕСО! 🚀</button>
+            </div>
+            <!-- Правая часть: колесо -->
+            <div style="position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin: 0 auto;">
+                <div style="position: absolute; top: -5px; width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 24px solid #df9b56; z-index: 15; filter: drop-shadow(0 2px 5px #000);"></div>
+                <canvas id="wheelCanvas" width="280" height="280" style="width: 280px; height: 280px; border-radius: 50%; box-shadow: 0 0 30px rgba(0,0,0,0.7); transition: transform 4s cubic-bezier(0.1, 0.8, 0.1, 1); z-index: 5;"></canvas>
+                <div style="position: absolute; width: 20px; height: 20px; background: #df9b56; border-radius: 50%; z-index: 10; border: 3px solid #221f1c; box-shadow: 0 0 15px #000;"></div>
             </div>
         </div>
     </div>
+</div>
        <!-- ===== КОРОТКИЕ ЗВУКИ ДЛЯ РУЛЕТКИ ===== -->
     <audio id="startSound" preload="auto">
         <source src="https://www.soundjay.com/misc/sounds/click-2.mp3" type="audio/mpeg">
@@ -959,37 +1022,43 @@ function drawWheel() {
     const ctx = canvas.getContext('2d');
     const items = getWheelItems();
     const numSegments = items.length;
-    ctx.clearRect(0, 0, 340, 340);
+    
+    // Определяем размер канваса (для адаптива)
+    const size = Math.min(canvas.width, canvas.height);
+    const centerX = size / 2;
+    const centerY = size / 2;
+    const radius = size / 2 - 2;
+    
+    ctx.clearRect(0, 0, size, size);
     if (numSegments === 0) return;
 
     const anglePerSegment = (2 * Math.PI) / numSegments;
-    const colors = ["#2d2520", "#3d322b", "#4a3e35", "#201a16", "#57483f", "#14110f"];
+    const colors = ["#2d2520","#3d322b","#4a3e35","#201a16","#57483f","#14110f"];
 
     for (let i = 0; i < numSegments; i++) {
         const angle = i * anglePerSegment;
         ctx.beginPath();
         ctx.fillStyle = colors[i % colors.length];
-        ctx.moveTo(170, 170);
-        ctx.arc(170, 170, 170, angle, angle + anglePerSegment);
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, angle, angle + anglePerSegment);
         ctx.closePath();
         ctx.fill();
-        ctx.strokeStyle = "rgba(223, 155, 86, 0.4)";
+        ctx.strokeStyle = "rgba(223,155,86,0.4)";
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
         ctx.save();
-        ctx.translate(170, 170);
+        ctx.translate(centerX, centerY);
         ctx.rotate(angle + anglePerSegment / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 14px Georgia";
+        ctx.font = "bold " + (radius / 14) + "px Georgia";
         let text = items[i];
-        if (text.length > 14) text = text.slice(0, 12) + "...";
-        ctx.fillText(text, 150, 5);
+        if (text.length > 12) text = text.slice(0, 10) + "...";
+        ctx.fillText(text, radius - 10, 4);
         ctx.restore();
     }
 }
-
 // ===== ЗВУКИ  =====
 function playSound(type) {
     try {
@@ -1262,6 +1331,68 @@ window.addEventListener('hashchange', function() {
         setTimeout(openMemes, 100);
     }
 })();
+// ===== СТРАНИЦА ИГР =====
+function openGames() {
+    const hd = document.querySelector('.hd');
+    const mainContainer = document.querySelector('.main-container');
+    const footer = document.querySelector('.footer');
+    const memesPage = document.getElementById('memesPage');
+    
+    if (hd) hd.style.display = 'none';
+    if (mainContainer) mainContainer.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+    if (memesPage) memesPage.style.display = 'none';
+    
+    const gamesPage = document.getElementById('gamesPage');
+    if (gamesPage) gamesPage.style.display = 'block';
+    
+    window.scrollTo(0, 0);
+}
+
+function closeGames() {
+    const hd = document.querySelector('.hd');
+    const mainContainer = document.querySelector('.main-container');
+    const footer = document.querySelector('.footer');
+    
+    if (hd) hd.style.display = 'block';
+    if (mainContainer) mainContainer.style.display = 'grid';
+    if (footer) footer.style.display = 'block';
+    
+    const gamesPage = document.getElementById('gamesPage');
+    if (gamesPage) gamesPage.style.display = 'none';
+    
+    window.scrollTo(0, 0);
+}
+
+// ===== DOOM =====
+function openDoom() {
+    document.getElementById('doomModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDoom() {
+    document.getElementById('doomModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ===== FLAPPY BIRD =====
+function openFlappy() {
+    document.getElementById('flappyModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFlappy() {
+    document.getElementById('flappyModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ===== ЗАКРЫТИЕ ПО ESC =====
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeDoom();
+        closeFlappy();
+    }
+});
     </script>
 </body>
 </html>
