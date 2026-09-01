@@ -13,7 +13,7 @@
         }
         body {
     background: #432d1e;
-    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80');
+    background-image: url('https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -847,7 +847,7 @@ textarea,
         function up() {
             const n = new Date(), hr = n.getHours(), t = n.getTime(), yr = n.getFullYear(), m = n.getMonth();
             document.getElementById('cd').innerText = n.toLocaleDateString('ru-RU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById('hd').innerText = hr >= 5 && hr < 12 ? "Доброе утро!" : hr >= 12 && hr < 18 ? "Добрый день!" : hr >= 18 && hr < 24 ? "Добрый evening!" : "Доброй ночи!";
+            document.getElementById('hd').innerText = hr >= 5 && hr < 12 ? "Доброе утро!" : hr >= 12 && hr < 18 ? "Добрый день!" : hr >= 18 && hr < 24 ? "Добрый вечер!" : "Доброй ночи!";
             let sy = m < 8 ? yr - 1 : yr, ey = m < 8 ? yr : yr + 1;
             if (m >= 5 && m <= 7) { sy = yr; ey = yr + 1; }
             const ss = new Date(`September 1, ${sy} 00:00:00`).getTime(), es = new Date(`May 31, ${ey} 00:00:00`).getTime();
@@ -876,7 +876,7 @@ const themes = [
     {
         name: 'Тёмная',
         bg: '#2a1f1a',  // был #1a1410 — стал светлее/мягче
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+        image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         icon: '🌙',
         textColor: '#f0ece6',  // был #f7f5f0 — чуть теплее
         accent: '#df9b56',
@@ -886,7 +886,7 @@ const themes = [
     {
         name: 'Лесная',
         bg: '#0f1f0f',
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+        image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         icon: '🌲',
         textColor: '#d4e8d4',
         accent: '#6a9a4a',
@@ -894,8 +894,8 @@ const themes = [
     },
     {
         name: 'Океан',
-        bg: '#0a1628',
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+        bg: '#193969',
+        image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         icon: '🟦',
         textColor: '#d0e8f0',
         accent: '#4a9aaa',
@@ -903,8 +903,8 @@ const themes = [
     },
     {
         name: 'Закат',
-        bg: '#2a1410',
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+        bg: '#3b1c16',
+        image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         icon: '🌇',
         textColor: '#f5e6d0',
         accent: '#e8945a',
@@ -913,7 +913,7 @@ const themes = [
     {
        name: 'Бежевая',
        bg: '#4f340e',          // тёплый бежевый фон
-       image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+       image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
        icon: '🌾',              // колосок пшеницы (вайб)
        textColor: '#2a201a',    // тёмно-коричневый текст
        accent: '#b8956a',       // приглушённый золотистый
@@ -922,7 +922,7 @@ const themes = [
     {
        name: 'Светлая',
        bg: '#a39e90',          // тёплый бежевый фон
-       image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80',
+       image: 'https://images.unsplash.com/photo-1509833214245-2078371af406?q=80&w=2039&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
        icon: '⚪',              // колосок пшеницы (вайб)
        textColor: '#2a201a',    // тёмно-коричневый текст
        accent: '#b8956a',       // приглушённый золотистый
@@ -991,96 +991,182 @@ function toggleTheme() {
             calDate.setMonth(calDate.getMonth() + direction);
             renderCalendarTable();
         }
+function renderCalendarTable() {
+    const year = calDate.getFullYear();
+    const month = calDate.getMonth();
+    const realToday = new Date();
+    const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+    document.getElementById('calMonthYear').innerText = `${months[month]} ${year}`;
 
-        function renderCalendarTable() {
-            const year = calDate.getFullYear();
-            const month = calDate.getMonth();
-            const realToday = new Date();
-            const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-            document.getElementById('calMonthYear').innerText = `${months[month]} ${year}`;
+    let seasonColor = "#df9b56";
+    let seasonBg = "#221f1c";
+    let seasonEmojis = ["🍁", "🍂"];
+    if (month === 11 || month === 0 || month === 1) {
+        seasonColor = "#7fc8f8";
+        seasonBg = "#121a24";
+        seasonEmojis = ["❄️", "🌨️"];
+    } else if (month === 2 || month === 3 || month === 4) {
+        seasonColor = "#a3e284";
+        seasonBg = "#182414";
+        seasonEmojis = ["🌱", "🌸", "🌿"];
+    } else if (month === 5 || month === 6 || month === 7) {
+        seasonColor = "#f9c74f";
+        seasonBg = "#2b2315";
+        seasonEmojis = ["☀️", "🍀", "🌻"];
+    }
 
-            let seasonColor = "#df9b56";
-            let seasonBg = "#221f1c";
-            let seasonEmojis = ["🍁", "🍂"];
-            if (month === 11 || month === 0 || month === 1) {
-                seasonColor = "#7fc8f8";
-                seasonBg = "#121a24";
-                seasonEmojis = ["❄️", "🌨️", "✨"];
-            } else if (month === 2 || month === 3 || month === 4) {
-                seasonColor = "#a3e284";
-                seasonBg = "#182414";
-                seasonEmojis = ["🌱", "🌸", "🌿"];
-            } else if (month === 5 || month === 6 || month === 7) {
-                seasonColor = "#f9c74f";
-                seasonBg = "#2b2315";
-                seasonEmojis = ["☀️", "🍀", "🌻"];
-            }
+    const card = document.getElementById('calCard');
+    card.style.background = seasonBg;
+    card.style.borderColor = seasonColor;
+    document.getElementById('calMonthYear').style.color = seasonColor;
+    document.getElementById('calWeekDays').style.color = seasonColor;
+    document.getElementById('calWeekDays').style.borderColor = `rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.3)`;
+    document.getElementById('calHeaderLine').style.borderBottomColor = `rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.4)`;
+    ['calBtnPrev', 'calBtnToday', 'calBtnNext'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.style.color = seasonColor;
+        btn.style.borderColor = seasonColor;
+        btn.style.background = `rgba(0,0,0,0.3)`;
+    });
 
-            const card = document.getElementById('calCard');
-            card.style.background = seasonBg;
-            card.style.borderColor = seasonColor;
-            document.getElementById('calMonthYear').style.color = seasonColor;
-            document.getElementById('calWeekDays').style.color = seasonColor;
-            document.getElementById('calWeekDays').style.borderColor = `rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.3)`;
-            document.getElementById('calHeaderLine').style.borderBottomColor = `rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.4)`;
-            ['calBtnPrev', 'calBtnToday', 'calBtnNext'].forEach(id => {
-                const btn = document.getElementById(id);
-                btn.style.color = seasonColor;
-                btn.style.borderColor = seasonColor;
-                btn.style.background = `rgba(0,0,0,0.3)`;
-            });
+    clearInterval(particleInterval);
+    const particleContainer = document.getElementById('season-particles');
+    particleContainer.innerHTML = "";
+    particleInterval = setInterval(() => {
+        const p = document.createElement('div');
+        p.innerText = seasonEmojis[Math.floor(Math.random() * seasonEmojis.length)];
+        p.style.position = 'absolute';
+        p.style.top = '-40px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.fontSize = Math.random() * 20 + 15 + 'px';
+        p.style.opacity = Math.random() * 0.6 + 0.4;
+        p.style.pointerEvents = 'none';
+        p.style.transition = 'transform 4s linear, top 4s linear, opacity 4s ease';
+        particleContainer.appendChild(p);
+        setTimeout(() => {
+            p.style.top = '105vh';
+            p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 50 - 25}px)`;
+            p.style.opacity = '0';
+        }, 50);
+        setTimeout(() => p.remove(), 4000);
+    }, 300);
 
-            clearInterval(particleInterval);
-            const particleContainer = document.getElementById('season-particles');
-            particleContainer.innerHTML = "";
-            particleInterval = setInterval(() => {
-                const p = document.createElement('div');
-                p.innerText = seasonEmojis[Math.floor(Math.random() * seasonEmojis.length)];
-                p.style.position = 'absolute';
-                p.style.top = '-40px';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.fontSize = Math.random() * 20 + 15 + 'px';
-                p.style.opacity = Math.random() * 0.6 + 0.4;
-                p.style.pointerEvents = 'none';
-                p.style.transition = 'transform 4s linear, top 4s linear, opacity 4s ease';
-                particleContainer.appendChild(p);
-                setTimeout(() => {
-                    p.style.top = '105vh';
-                    p.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 50 - 25}px)`;
-                    p.style.opacity = '0';
-                }, 50);
-                setTimeout(() => p.remove(), 4000);
-            }, 300);
+    let firstDay = new Date(year, month, 1).getDay();
+    let startShift = firstDay === 0 ? 6 : firstDay - 1; 
+    let daysInMonth = new Date(year, month + 1, 0).getDate();
+    let daysInPrevMonth = new Date(year, month, 0).getDate();
+    let gridHTML = "";
+    
+    // Прошлый месяц (тусклые кубики)
+    for (let i = startShift - 1; i >= 0; i--) {
+        gridHTML += `<div style="background: rgba(0,0,0,0.15); border: 1px solid rgba(223,155,86,0.05); border-radius: 6px; color: #554d46; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; opacity: 0.3;">${daysInPrevMonth - i}</div>`;
+    }
+    
+// Текущий месяц — АДСКОЕ КРАСНОЕ СИЯНИЕ НА 1 СЕНТЯБРЯ + КАНИКУЛЫ
+for (let day = 1; day <= daysInMonth; day++) {
+    let isToday = (day === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear());
+    let isFirstSeptember = (day === 1 && month === 8);
+    let isBirthday = (day === 27 && month === 10);
+    
+    // ===== КАНИКУЛЫ =====
+    let isAutumnHolidays = (day >= 24 && day <= 31 && month === 9) || (day >= 1 && day <= 4 && month === 10);
+    let isWinterHolidays = (day >= 31 && day <= 31 && month === 11) || (day >= 1 && day <= 10 && month === 0);
+    let isSpringHolidays = (day >= 27 && day <= 31 && month === 2) || (day >= 1 && day <= 4 && month === 3);
+    let isSummerHolidays = (day >= 5 && day <= 31 && month === 4) || (day >= 1 && day <= 25 && month === 4);
+    let isHolidays = isAutumnHolidays || isWinterHolidays || isSpringHolidays || isSummerHolidays;
+    
+    let cellStyle = `background: rgba(0,0,0,0.3); border: 1px solid ${seasonColor}33; border-radius: 6px; color: #ffffff; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px;`;
+    
+    if (isToday) {
+        cellStyle = `background: rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.25); border: 2px solid ${seasonColor}; border-radius: 6px; color: ${seasonColor}; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; box-shadow: 0 0 12px ${seasonColor}55;`;
+    }
+    
+    // 🌿 КАНИКУЛЫ — ЛЁГКОЕ ЗЕЛЁНОЕ СВЕЧЕНИЕ 🌿
+    if (isHolidays) {
+        cellStyle = `background: rgba(34, 80, 34, 0.35); border: 1.5px solid #4caf50; border-radius: 6px; color: #8bc34a; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; box-shadow: 0 0 12px rgba(76, 175, 80, 0.2), 0 0 25px rgba(76, 175, 80, 0.08); text-shadow: 0 0 10px rgba(76, 175, 80, 0.15);`;
+    }
+    
+    // ★★★ 1 СЕНТЯБРЯ — АДСКОЕ КРАСНОЕ СИЯНИЕ ★★★
+    if (isFirstSeptember) {
+        cellStyle = `background: #4a0000; border: 3px solid #ff0000; border-radius: 6px; color: #ff0000; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #cc0000, 0 0 120px #ff3333; animation: glow-pulse-red 1.5s infinite alternate ease-in-out; text-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000; cursor: pointer;`;
+    }
+    
+    // ★ 27 НОЯБРЯ — ФИОЛЕТОВОЕ СИЯНИЕ ★
+    if (isBirthday) {
+        cellStyle = `background: #3b1f5e; border: 2px solid #a855f7; border-radius: 6px; color: #ffffff; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; box-shadow: 0 0 20px #a855f7, 0 0 40px #7c3aed, 0 0 60px #6d28d9; animation: glow-pulse 2s infinite alternate ease-in-out; text-shadow: 0 0 20px #d8b4fe; cursor: pointer;`;
+    }
 
-            let firstDay = new Date(year, month, 1).getDay();
-            let startShift = firstDay === 0 ? 6 : firstDay - 1; 
-            let daysInMonth = new Date(year, month + 1, 0).getDate();
-            let daysInPrevMonth = new Date(year, month, 0).getDate();
-            let gridHTML = "";
-                        // Прошлый месяц (тусклые кубики)
-            for (let i = startShift - 1; i >= 0; i--) {
-                gridHTML += `<div style="background: rgba(0,0,0,0.15); border: 1px solid rgba(223,155,86,0.05); border-radius: 6px; color: #554d46; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 32px; opacity: 0.3;">${daysInPrevMonth - i}</div>`;
-            }
-            // Текущий месяц (Маленькие квадраты с числами)
-            for (let day = 1; day <= daysInMonth; day++) {
-                let isToday = (day === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear());
-                let cellStyle = `background: rgba(0,0,0,0.3); border: 1px solid ${seasonColor}33; border-radius: 6px; color: #ffffff; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 32px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);`;
-                
-                if (isToday) {
-                    cellStyle = `background: rgba(${parseInt(seasonColor.slice(1,3),16)}, ${parseInt(seasonColor.slice(3,5),16)}, ${parseInt(seasonColor.slice(5,7),16)}, 0.25); border: 2px solid ${seasonColor}; border-radius: 6px; color: ${seasonColor}; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 32px; box-shadow: 0 0 12px ${seasonColor}55;`;
-                }
+    if (isFirstSeptember) {
+        gridHTML += `<div style="${cellStyle}" data-special="september">${day}</div>`;
+    } else if (isBirthday) {
+        gridHTML += `<div style="${cellStyle}" data-special="birthday">${day}</div>`;
+    } else if (isHolidays) {
+        gridHTML += `<div style="${cellStyle}" data-holiday="true">${day}</div>`;
+    } else {
+        gridHTML += `<div style="${cellStyle}">${day}</div>`;
+    }
+}
 
-                gridHTML += `<div style="${cellStyle}">${day}</div>`;
-            }
-                        // Следующий месяц (тусклые кубики)
-            let totalCells = startShift + daysInMonth;
-            let nextMonthDays = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-            for (let day = 1; day <= nextMonthDays; day++) {
-                gridHTML += `<div style="background: rgba(0,0,0,0.15); border: 1px solid rgba(223,155,86,0.05); border-radius: 6px; color: #554d46; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 32px; opacity: 0.3;">${day}</div>`;
-            }
-            document.getElementById('calDaysGrid').innerHTML = gridHTML;
+// Следующий месяц (тусклые кубики)
+let totalCells = startShift + daysInMonth;
+let nextMonthDays = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+for (let day = 1; day <= nextMonthDays; day++) {
+    gridHTML += `<div style="background: rgba(0,0,0,0.15); border: 1px solid rgba(223,155,86,0.05); border-radius: 6px; color: #554d46; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; height: 60px; opacity: 0.3;">${day}</div>`;
+}
+
+document.getElementById('calDaysGrid').innerHTML = gridHTML;
+
+// ★ 1 СЕНТЯБРЯ — АДСКАЯ КРАСНАЯ МОДАЛКА ★
+document.querySelectorAll('#calDaysGrid div[data-special="september"]').forEach(el => {
+    el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showRedModal('🔥 1 СЕНТЯБРЯ — СУДНЫЙ ДЕНЬ ДЛЯ ВСЕХ ШКОЛОТРОНОВ!', '⏳ ДОБРО ПОЖАЛОВАТЬ В АДСКИЙ УЧЕБНЫЙ ГОД!');
+    });
+});
+
+// ★ 27 НОЯБРЯ ★
+document.querySelectorAll('#calDaysGrid div[data-special="birthday"]').forEach(el => {
+    el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showSpecialModal('27 ноября — День рождения у разраба этого гениального сайта!', 'Ну только хз для чего он нужен');
+    });
+});
+
+// 🌿 КЛИК НА КАНИКУЛЫ 🌿
+document.querySelectorAll('#calDaysGrid div[data-holiday="true"]').forEach(el => {
+    el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showHolidayModal('🌿 КАНИКУЛЫ!', 'Отдыхаем, расслабляемся и набираемся сил! 🏖️');
+    });
+});
+
+// Анимация пульсации фиолетовый
+if (!document.getElementById('glow-pulse-style')) {
+    const style = document.createElement('style');
+    style.id = 'glow-pulse-style';
+    style.textContent = `
+        @keyframes glow-pulse {
+            0%   { box-shadow: 0 0 15px #a855f7, 0 0 30px #7c3aed; }
+            100% { box-shadow: 0 0 35px #c084fc, 0 0 60px #a855f7, 0 0 90px #6d28d9; }
         }
+    `;
+    document.head.appendChild(style);
+}
 
+// Анимация для красного адского сияния
+if (!document.getElementById('glow-pulse-red-style')) {
+    const style = document.createElement('style');
+    style.id = 'glow-pulse-red-style';
+    style.textContent = `
+        @keyframes glow-pulse-red {
+            0%   { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #cc0000; }
+            50%  { box-shadow: 0 0 40px #ff3333, 0 0 80px #ff0000, 0 0 120px #ff0000, 0 0 160px #cc0000; }
+            100% { box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #cc0000, 0 0 120px #ff3333; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+}
         // ===== ЗАМЕТКИ И КЛИКЕР =====
         const notesArea = document.getElementById('local-notes');
         const counterSpan = document.getElementById('click-counter');
@@ -1292,10 +1378,11 @@ let memesLoaded = false;
 // ===== ВОТ СЮДА ТЫ ВСТАВЛЯЕШЬ iframe КОДЫ =====
 const MEMES_DATA = [
     // ★ ДОБАВЛЯЙ СВОИ МЕМЫ СЮДА ★
-    // { title: 'Название мема — Автор', iframe: '<iframe src="https://assets.pinterest.com/ext/embed.html?id=123456789" height="558" width="345" frameborder="0" scrolling="no"></iframe>' },
+    { iframe: '<iframe src="https://assets.pinterest.com/ext/embed.html?id=951104015092595073" height="558" width="345" frameborder="0" scrolling="no"></iframe>' }
+    // { iframe: '<iframe src="https://assets.pinterest.com/ext/embed.html?id=123456789" height="558" width="345" frameborder="0" scrolling="no"></iframe>' },
     
     // Пример:
-    // { title: 'Крутой мем — Кирилл', iframe: '<iframe src="https://assets.pinterest.com/ext/embed.html?id=856387685438368023" height="558" width="345" frameborder="0" scrolling="no"></iframe>' },
+    // { iframe: '<iframe src="https://assets.pinterest.com/ext/embed.html?id=856387685438368023" height="558" width="345" frameborder="0" scrolling="no"></iframe>' },
 ];
 
 function getMemes() {
@@ -1308,7 +1395,7 @@ function getMemes() {
     }
     // Если нет сохранённых — берём из MEMES_DATA
     return MEMES_DATA.map(m => ({
-        title: m.title,
+        title: '',
         url: m.iframe,
         isPinterest: true,
         html: m.iframe
@@ -1424,23 +1511,8 @@ function loadMemes() {
             card.appendChild(img);
         }
         
-        // Название
-        const titleDiv = document.createElement('div');
-        titleDiv.className = 'meme-title';
-        titleDiv.textContent = meme.title;
-        titleDiv.style.cssText = `
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            padding: 8px 12px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-size: 0.8rem;
-            color: #fff;
-            text-align: center;
-        `;
-        card.appendChild(titleDiv);
+        // ★ НАЗВАНИЕ УБРАНО — КОММЕНТАРИЙ ВМЕСТО КОДА ★
+        // Название больше не показывается
         
         grid.appendChild(card);
     });
@@ -1450,7 +1522,7 @@ function refreshMemes() {
     if (document.getElementById('memesPage').style.display === 'block') {
         // Очищаем кэш и перезагружаем
         const memes = MEMES_DATA.map(m => ({
-            title: m.title,
+            title: '',
             url: m.iframe,
             isPinterest: true,
             html: m.iframe
@@ -1459,7 +1531,6 @@ function refreshMemes() {
         loadMemes();
     }
 }
-
 // ===== ОБРАБОТКА КНОПКИ "НАЗАД" =====
 window.addEventListener('popstate', function(event) {
     const memesPage = document.getElementById('memesPage');
@@ -1531,6 +1602,277 @@ document.addEventListener('keydown', function(e) {
         closeFlappy();
     }
 });
-    </script>
+// ===== ЗАЩИТА ДАННЫХ =====
+(function protectData() {
+    const notes = document.getElementById('local-notes');
+    const counter = document.getElementById('click-counter');
+    if (notes) {
+        notes.value = localStorage.getItem('savedNotes') || '';
+        notes.oninput = () => localStorage.setItem('savedNotes', notes.value);
+    }
+    if (counter) {
+        let c = parseInt(localStorage.getItem('clickCount')) || 0;
+        counter.textContent = c;
+        document.querySelector('.click-btn').onclick = function(e) {
+            c++;
+            counter.textContent = c;
+            localStorage.setItem('clickCount', c);
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => this.style.transform = 'scale(1)', 50);
+            e.preventDefault();
+        };
+    }
+})();
+// ==========================================
+// ★ МОДАЛЬНОЕ ОКНО ДЛЯ 27 НОЯБРЯ (ФИОЛЕТОВОЕ) ★
+// ==========================================
+function showSpecialModal(title, subtitle) {
+    let existing = document.getElementById('specialModalOverlay');
+    if (existing) {
+        existing.style.display = 'flex';
+        return;
+    }
+    const overlay = document.createElement('div');
+    overlay.id = 'specialModalOverlay';
+    overlay.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 9999; padding: 20px; box-sizing: border-box;
+    `;
+    const box = document.createElement('div');
+    box.style.cssText = `
+        background: linear-gradient(145deg, #1f1f3a, #12121f);
+        padding: 30px 24px; border-radius: 40px; max-width: 340px; width: 100%;
+        text-align: center; border: 2px solid #7c3aed;
+        box-shadow: 0 0 40px #6d28d9; color: #f0eaff;
+        font-size: clamp(18px, 4vw, 24px); font-weight: 600;
+        line-height: 1.4; animation: fadePop 0.3s ease;
+        font-family: Georgia, 'Times New Roman', serif;
+    `;
+    box.innerHTML = `
+        <div style="font-size: 2rem; margin-bottom: 8px;">🎂</div>
+        <div>${title}</div>
+        <div style="margin-top: 10px; font-size: clamp(12px, 2.5vw, 16px); font-weight: 400; color: #b8b0d0;">${subtitle}</div>
+        <button onclick="closeSpecialModal()" style="
+            margin-top: 22px; background: #4a1a6b; border: none;
+            padding: 10px 24px; border-radius: 40px; color: white;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            box-shadow: 0 0 15px #7c3aed; width: 100%;
+            transition: 0.2s; font-family: Georgia, serif;
+        ">Я в курсе 👻</button>
+    `;
+    if (!document.getElementById('fadePop-style')) {
+        const style = document.createElement('style');
+        style.id = 'fadePop-style';
+        style.textContent = `
+            @keyframes fadePop {
+                0%   { transform: scale(0.8); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSpecialModal();
+    });
+}
+
+function closeSpecialModal() {
+    const el = document.getElementById('specialModalOverlay');
+    if (el) el.remove();
+}
+
+// ==========================================
+// ★ МОДАЛЬНОЕ ОКНО ДЛЯ 1 СЕНТЯБРЯ (КРАСНОЕ АДСКОЕ) ★
+// ==========================================
+function showRedModal(title, subtitle) {
+    let existing = document.getElementById('specialModalOverlay');
+    if (existing) {
+        existing.style.display = 'flex';
+        return;
+    }
+    const overlay = document.createElement('div');
+    overlay.id = 'specialModalOverlay';
+    overlay.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 9999; padding: 20px; box-sizing: border-box;
+    `;
+    const box = document.createElement('div');
+    box.style.cssText = `
+        background: linear-gradient(145deg, #2a0000, #1a0000);
+        padding: 30px 24px; border-radius: 40px; max-width: 360px; width: 100%;
+        text-align: center; border: 3px solid #ff0000;
+        box-shadow: 0 0 60px #ff0000, 0 0 120px #cc0000, 0 0 180px #ff3333;
+        color: #ff0000;
+        font-size: clamp(20px, 4.5vw, 28px); font-weight: 900;
+        line-height: 1.4; animation: fadePop 0.3s ease;
+        font-family: Georgia, 'Times New Roman', serif;
+        text-shadow: 0 0 30px #ff0000;
+    `;
+    box.innerHTML = `
+        <div style="font-size: 3rem; margin-bottom: 10px;">🔥</div>
+        <div style="color: #ff0000;">${title}</div>
+        <div style="margin-top: 12px; font-size: clamp(14px, 3vw, 18px); font-weight: 600; color: #ff6666; text-shadow: 0 0 20px #ff0000;">${subtitle}</div>
+        <button onclick="closeSpecialModal()" style="
+            margin-top: 25px; background: #ff0000; border: 2px solid #ff4444;
+            padding: 12px 28px; border-radius: 40px; color: #000000;
+            font-size: 18px; font-weight: 900; cursor: pointer;
+            box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000;
+            width: 100%; transition: 0.2s; font-family: Georgia, serif;
+            text-shadow: 0 0 10px #ff6666;
+        ">🔥 Я В КУРСЕ 🔥</button>
+    `;
+    if (!document.getElementById('fadePop-style')) {
+        const style = document.createElement('style');
+        style.id = 'fadePop-style';
+        style.textContent = `
+            @keyframes fadePop {
+                0%   { transform: scale(0.8); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSpecialModal();
+    });
+}
+
+// ==========================================
+// ★ УБИРАЕМ ВЫДЕЛЕНИЕ ПРИ КЛИКЕ ★
+// ==========================================
+document.addEventListener('click', function(e) {
+    if (window.getSelection) {
+        window.getSelection().removeAllRanges();
+    }
+    if (e.target && e.target.blur) {
+        e.target.blur();
+    }
+});
+
+// ==========================================
+// ★ ВЫХОД ПО ESC ★
+// ==========================================
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        // Закрываем календарь
+        const calModal = document.getElementById('calModal');
+        if (calModal && calModal.style.display === 'flex') {
+            closeCal();
+        }
+        // Закрываем модальное окно с пасхалками
+        const specialModal = document.getElementById('specialModalOverlay');
+        if (specialModal && specialModal.style.display === 'flex') {
+            closeSpecialModal();
+        }
+        // Закрываем рулетку
+        const wheelModal = document.getElementById('wheelModal');
+        if (wheelModal && wheelModal.style.display === 'flex') {
+            closeWheel();
+        }
+        // Закрываем меню
+        const sideMenu = document.getElementById('sb');
+        if (sideMenu && sideMenu.classList.contains('act')) {
+            sideMenu.classList.remove('act');
+        }
+        // Закрываем Flappy Bird
+        const flappyModal = document.getElementById('flappyModal');
+        if (flappyModal && flappyModal.style.display === 'flex') {
+            closeFlappy();
+        }
+        // Закрываем мемы (если открыты)
+        const memesPage = document.getElementById('memesPage');
+        if (memesPage && memesPage.style.display === 'block') {
+            closeMemes();
+        }
+        // Закрываем игры (если открыты)
+        const gamesPage = document.getElementById('gamesPage');
+        if (gamesPage && gamesPage.style.display === 'block') {
+            closeGames();
+        }
+    }
+});
+
+// ==========================================
+// ★ УБИРАЕМ ВЫДЕЛЕНИЕ С ЯЧЕЕК КАЛЕНДАРЯ ПРИ КЛИКЕ ★
+// ==========================================
+document.addEventListener('mousedown', function(e) {
+    if (e.target.closest && e.target.closest('#calDaysGrid div')) {
+        e.preventDefault();
+    }
+});
+// ==========================================
+// 🌿 МОДАЛЬНОЕ ОКНО ДЛЯ КАНИКУЛ 🌿
+// ==========================================
+function showHolidayModal(title, subtitle) {
+    let existing = document.getElementById('holidayModalOverlay');
+    if (existing) {
+        existing.style.display = 'flex';
+        return;
+    }
+    const overlay = document.createElement('div');
+    overlay.id = 'holidayModalOverlay';
+    overlay.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 9999; padding: 20px; box-sizing: border-box;
+    `;
+    const box = document.createElement('div');
+    box.style.cssText = `
+        background: linear-gradient(145deg, #1a2a1a, #0d1f0d);
+        padding: 30px 24px; border-radius: 40px; max-width: 340px; width: 100%;
+        text-align: center; border: 2px solid #4caf50;
+        box-shadow: 0 0 30px rgba(76, 175, 80, 0.25), 0 0 60px rgba(76, 175, 80, 0.08);
+        color: #8bc34a;
+        font-size: clamp(22px, 5vw, 30px); font-weight: 700;
+        line-height: 1.4; animation: fadePop 0.3s ease;
+        font-family: Georgia, 'Times New Roman', serif;
+    `;
+    box.innerHTML = `
+        <div style="font-size: 3rem; margin-bottom: 10px;">🌿</div>
+        <div style="color: #8bc34a;">${title}</div>
+        <div style="margin-top: 12px; font-size: clamp(14px, 3vw, 18px); font-weight: 400; color: #a5d6a7;">${subtitle}</div>
+        <button onclick="closeHolidayModal()" style="
+            margin-top: 25px; background: #2e7d32; border: 2px solid #4caf50;
+            padding: 12px 28px; border-radius: 40px; color: #ffffff;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+            width: 100%; transition: 0.2s; font-family: Georgia, serif;
+        ">🌴 Отдыхаем!</button>
+    `;
+    if (!document.getElementById('fadePop-style')) {
+        const style = document.createElement('style');
+        style.id = 'fadePop-style';
+        style.textContent = `
+            @keyframes fadePop {
+                0%   { transform: scale(0.8); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeHolidayModal();
+    });
+}
+
+function closeHolidayModal() {
+    const el = document.getElementById('holidayModalOverlay');
+    if (el) el.remove();
+}
+</script>
 </body>
 </html>
